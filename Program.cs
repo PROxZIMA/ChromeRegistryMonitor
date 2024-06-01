@@ -46,12 +46,13 @@ public class RegistryWatcher
         {
             Console.WriteLine($"Watching for changes in the {GOOGLE_KEY_PATH} registry");
             googleKey = Registry.LocalMachine.OpenSubKey(GOOGLE_KEY_PATH, true);
+            int i = 0;
             if (googleKey != null)
             {
                 if (googleKey.OpenSubKey(CHROME_SUB_KEY) != null)
                 {
                     googleKey.DeleteSubKeyTree(CHROME_SUB_KEY);
-                    Console.WriteLine("Chrome subkey tree deleted successfully");
+                    Console.WriteLine($"Chrome subkey tree deleted successfully {++i}");
                 }
             }
 
@@ -93,7 +94,7 @@ public class RegistryWatcher
                         if (googleKey.OpenSubKey(CHROME_SUB_KEY) != null)
                         {
                             googleKey.DeleteSubKeyTree(CHROME_SUB_KEY);
-                            Console.WriteLine("Chrome subkey tree deleted successfully");
+                            Console.WriteLine($"Chrome subkey tree deleted successfully {++i}");
                         }
                     }
 
